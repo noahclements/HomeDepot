@@ -7,9 +7,9 @@ Bolts = 5 cents each
 
 Washers = 2 cents each 
 
-A minimum order of 50 of each item must be ordered before the order can be processed.
+# A minimum order of 50 of each item must be ordered before the order can be processed.
 
-Your program should do all of the following:
+# Your program should do all of the following:
 
 1.	Obtain input from the customer regarding the quantity of nuts, bolts and washers they want to buy. 
 
