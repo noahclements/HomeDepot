@@ -1,4 +1,4 @@
-# HomeDepot
+# HomeDepot (CS120 HIGH SCHOOL JAVA ASSIGNMENT)
 Consumers can use the Home Depot website to order hardware items.  Your job is to use Java to write a program that will “process” the online order, calculate the final price, including 13% HST, for hardware items and output the complete details of the order for the consumer.  Use the following items and prices when designing your program:
       
 Nuts = 5 cents each 
