@@ -11,7 +11,7 @@ class HomeDepot {
 		double washers = 0.02;
 		double subTotal, totalHST;
 		int inputNuts, inputBolts, inputWashers;
-
+		boolean boolNuts, boolBolts, boolWashers = false;
 		int NutsDefault = 50;
 		int BoltsDefault = 50;
 		int WasherDefault = 50;
@@ -39,6 +39,7 @@ class HomeDepot {
 		}
 		if (i == 1) {
 			System.out.println(NutsDefault + " nuts have been requested as the minimum.");
+			boolNuts = true;
 		}
 
 		System.out.println(enter + "bolts:");
@@ -56,6 +57,7 @@ class HomeDepot {
 		}
 		if (y == 1) {
 			System.out.println(BoltsDefault + " bolts have been requested as the minimum.");
+			boolBolts = true;
 		}
 
 		System.out.println(enter + "washers:");
@@ -73,6 +75,7 @@ class HomeDepot {
 		}
 		if (r == 1) {
 			System.out.println(WasherDefault + " washers have been requested as the minimum.");
+			boolWashers = true;
 		}
 		
 		Thread.sleep(500);
@@ -85,16 +88,53 @@ class HomeDepot {
 		System.out.print(".");
 		Thread.sleep(1000);
 		System.out.println("");
-		System.out.println("\n" + "Nuts: " + "$" + inputNuts * nuts);
+		
+		if(i == 1) {
+			System.out.println("\n" + "Nuts: " + "$" + NutsDefault * nuts);
+		} else {
+			System.out.println("\n" + "Nuts: " + "$" + inputNuts * nuts);
+		}
+		
+		
+		if(y == 1) {
+			System.out.println("Bolts: " + "$" + BoltsDefault * bolts);
+		} else {
+			System.out.println("Bolts: " + "$" + inputBolts * bolts);
+		}
 
-		System.out.println("Bolts: " + "$" + inputBolts * bolts);
-
-		System.out.println("Washers: " + "$" + inputWashers + washers);
-
-		subTotal = (inputNuts * nuts) + (inputBolts + bolts) + (inputWashers + washers);
+		if(r == 1) {
+			System.out.println("Washers: " + "$" + WasherDefault * washers);
+		} else {
+			System.out.println("Washers: " + "$" + inputWashers * washers);
+		}
+		
+		if(boolNuts == true && boolBolts == true && boolWashers == true) { // nuts, bolts, and washers
+			subTotal = (NutsDefault * nuts) + (BoltsDefault * bolts) + (WasherDefault * washers);
 		System.out.println("Sub-total: " + "$" + Math.round(subTotal*100.0)/100.0);
+		} else if(boolNuts == true && boolBolts == true) {					// nuts, bolts
+			subTotal = (NutsDefault * nuts) + (BoltsDefault * bolts) + (inputWashers * washers);
+		System.out.println("Sub-total: " + "$" + Math.round(subTotal*100.0)/100.0);
+		} else if(boolNuts == true && boolWashers == true){					// nuts, washers 
+			subTotal = (NutsDefault * nuts) + (inputBolts * bolts) + (WasherDefault * washers);
+		System.out.println("Sub-total: " + "$" + Math.round(subTotal*100.0)/100.0);
+		} else if(boolNuts == true) {										// nuts
+			subTotal = (NutsDefault * nuts) + (inputBolts * bolts) + (inputWashers * washers);
+		System.out.println("Sub-total: " + "$" + Math.round(subTotal*100.0)/100.0);
+		} else if(boolBolts == true && boolWashers == true) {				// Bolts and Washers
+			subTotal = (inputNuts * nuts) + (BoltsDefault * bolts) + (WasherDefault * washers);
+		System.out.println("Sub-total: " + "$" + Math.round(subTotal*100.0)/100.0);
+		} else if(boolBolts == true) {										// bolts
+			subTotal = (inputNuts * nuts) + (BoltsDefault * bolts) + (inputWashers * washers);
+		System.out.println("Sub-total: " + "$" + Math.round(subTotal*100.0)/100.0);
+		} else if(boolWashers == true) {									// washers
+			subTotal = (inputNuts * nuts) + (inputBolts * bolts) + (WasherDefault * washers);
+		System.out.println("Sub-total: " + "$" + Math.round(subTotal*100.0)/100.0);
+		} else {
+			System.out.println("error");
+		}
 
-		totalHST = (inputNuts * nuts) + (inputBolts + bolts) + (inputWashers + washers) * 0.15;
+
+		totalHST = (inputNuts * nuts) + (inputBolts * bolts) + (inputWashers * washers) * 0.15;
 		System.out.println("HST: " + "$" + Math.round(totalHST*100.0)/100.0);
 
 		double total = subTotal + totalHST;
