@@ -9,9 +9,9 @@ class HomeDepot {
 		double nuts = 0.05;
 		double bolts = 0.05;
 		double washers = 0.02;
-		double subTotal, totalHST;
+		double subTotal = 0, totalHST = 0, total;
 		int inputNuts, inputBolts, inputWashers;
-		boolean boolNuts, boolBolts, boolWashers = false;
+		boolean boolNuts = false, boolBolts = false, boolWashers = false;
 		int NutsDefault = 50;
 		int BoltsDefault = 50;
 		int WasherDefault = 50;
@@ -162,7 +162,7 @@ class HomeDepot {
 		
 		
     // TOTAL
-		double total = subTotal + totalHST;
+		total = subTotal + totalHST;
 		System.out.println("Total: " + "$" + Math.round(total*100.0)/100.0);
 		Thread.sleep(1000);
 		System.out.println("\n" + "Thank you for shopping at Home Depot!");
