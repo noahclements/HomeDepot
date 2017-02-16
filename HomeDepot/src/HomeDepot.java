@@ -24,58 +24,80 @@ class HomeDepot {
 		int y = 0;
 		int r = 0;
 
+		// asking input for nuts
 		System.out.println(enter + "nuts:");
 		inData = stdin.readLine();
 		inputNuts = Integer.parseInt(inData);
 
+		if (inputNuts >= 50 && i == 0) {
+			System.out.println(inputNuts + " nuts have been requested.");
+		}
+		
 		if (inputNuts < 50 && i == 0) {
 			System.out.println(minimumNuts); // asks to re enter value
 			inData = stdin.readLine();
 			inputNuts = Integer.parseInt(inData);
+			
+		if(inputNuts < 50 && i == 0) {
 			i++;
 		}
-		if (inputNuts >= 50) {
-			System.out.println(inputNuts + " nuts have been requested.");
-		}
+	}
+		
 		if (i == 1) {
 			System.out.println(NutsDefault + " nuts have been requested as the minimum.");
 		}
 
-		System.out.println(enter + "bolts:");
+		// asking input for bolts
+		Thread.sleep(500);
+		System.out.println("\n" + enter + "bolts:");
 		inData = stdin.readLine();
 		inputBolts = Integer.parseInt(inData);
 
+		if (inputBolts >= 50 && i == 0) {
+			System.out.println(inputBolts + " bolts have been requested.");
+		}		
+		
+		
+		
 		if (inputBolts < 50 && y == 0) {
 			System.out.println(minimumBolts); // asks to re enter value
 			inData = stdin.readLine();
 			inputBolts = Integer.parseInt(inData);
-			y++;
+		
+		if (inputBolts < 50 && y == 0) {
+				y++;
+			}
 		}
-		if (inputBolts >= 50) {
-			System.out.println(inputBolts + " bolts have been requested.");
-		}
+
 		if (y == 1) {
 			System.out.println(BoltsDefault + " bolts have been requested as the minimum.");
 		}
 
-		System.out.println(enter + "washers:");
+		// asking input for washers
+		Thread.sleep(500);
+		System.out.println("\n" + enter + "washers:");
 		inData = stdin.readLine();
 		inputWashers = Integer.parseInt(inData);
 
+		if (inputWashers >= 50) {
+			System.out.println(inputWashers + " washers have been requested.");
+		}		
+		
+		
 		if (inputWashers < 50 && r == 0) {
 			System.out.println(minimumWashers); // asks to re enter value
 			inData = stdin.readLine();
 			inputWashers = Integer.parseInt(inData);
-			r++;
+		if (inputWashers < 50 && r == 0) {
+				r++;
+			}
 		}
-		if (inputWashers >= 50) {
-			System.out.println(inputWashers + " washers have been requested.");
-		}
+
 		if (r == 1) {
 			System.out.println(WasherDefault + " washers have been requested as the minimum.");
 		}
 		
-		Thread.sleep(500);
+		Thread.sleep(200);
 		System.out.println("\n" + "Please wait while your order is being processed.");
 		Thread.sleep(1000);
 		System.out.print(".");
@@ -128,34 +150,15 @@ class HomeDepot {
 			subTotal = (inputNuts * nuts) + (inputBolts * bolts) + (WasherDefault * washers);
 		System.out.println("Sub-total: " + "$" + Math.round(subTotal*100.0)/100.0);
 		} else {
-			System.out.println("error");
+			subTotal = (inputNuts * nuts) + (inputBolts * bolts) + (inputWashers * washers);
+			System.out.println("Sub-total: " + "$" + Math.round(subTotal*100.0)/100.0);
 		}
 
   // TOTAL HST
-		if(i == 1 && y == 1 && r == 1) { // nuts, bolts, and washers
-			totalHST = (NutsDefault * nuts) + (BoltsDefault * bolts) + (WasherDefault * washers) * 0.15;
-		System.out.println("Total HST: " + "$" + Math.round(totalHST*100.0)/100.0);
-		} else if(i == 1 && y == 1) {					// nuts, bolts
-			totalHST = (NutsDefault * nuts) + (BoltsDefault * bolts) + (inputWashers * washers) * 0.15;
-		System.out.println("Total HST: " + "$" + Math.round(totalHST*100.0)/100.0);
-		} else if(i == 1 && r == 1){					// nuts, washers
-			totalHST = (NutsDefault * nuts) + (inputBolts * bolts) + (WasherDefault * washers) * 0.15;
-		System.out.println("Total HST: " + "$" + Math.round(totalHST*100.0)/100.0);
-		} else if(i == 1) {										// nuts
-			totalHST = (NutsDefault * nuts) + (inputBolts * bolts) + (inputWashers * washers) * 0.15;
-		System.out.println("Total HST: " + "$" + Math.round(totalHST*100.0)/100.0);
-		} else if(y == 1 && r == 1) {				// Bolts and Washers
-			totalHST = (inputNuts * nuts) + (BoltsDefault * bolts) + (WasherDefault * washers) * 0.15;
-		System.out.println("Total HST: " + "$" + Math.round(totalHST*100.0)/100.0);
-		} else if(y == 1) {										// bolts
-			totalHST = (inputNuts * nuts) + (BoltsDefault * bolts) + (inputWashers * washers) * 0.15;
-		System.out.println("Total HST: " + "$" + Math.round(totalHST*100.0)/100.0);
-		} else if(r == 1) {									// washers
-			totalHST = (inputNuts * nuts) + (inputBolts * bolts) + (WasherDefault * washers) * 0.15;
-		System.out.println("Total HST: " + "$" + Math.round(totalHST*100.0)/100.0);
-		} else {
-			System.out.println("error");
-		}
+
+			totalHST = subTotal * 0.15;
+			System.out.println("Total HST: " + "$" + Math.round(totalHST*100.0)/100.0);
+		
 		
 		
     // TOTAL
