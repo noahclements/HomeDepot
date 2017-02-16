@@ -48,7 +48,7 @@ class HomeDepot {
 		}
 
 		// asking input for bolts
-		Thread.sleep(500);	// pauses for .5 seconds
+		Thread.sleep(200);	// pauses for .5 seconds
 		System.out.println("\n" + enter + "bolts:");	// makes a new line, asks user to input # of wanted bolts
 		inData = stdin.readLine();
 		inputBolts = Integer.parseInt(inData);	// assigns int inputBolts as the data input
@@ -74,7 +74,7 @@ class HomeDepot {
 		}
 
 		// asking input for washers
-		Thread.sleep(500);	// pauses for .5 seconds
+		Thread.sleep(200);	// pauses for .5 seconds
 		System.out.println("\n" + enter + "washers:");	// makes a new line, asks user to input wanted # of washers
 		inData = stdin.readLine();
 		inputWashers = Integer.parseInt(inData);	// declares inputWashers as the input data
