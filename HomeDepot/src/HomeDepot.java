@@ -25,9 +25,6 @@ class HomeDepot {
 		int y = 0;
 		int r = 0;
 
-		double nutPrice = 0;
-		double boltPrice = 0;
-		double washerPrice = 0;
 		// asking input for nuts
 		System.out.println(enter + "nuts:"); // asks user to input # of nuts wanted
 
@@ -35,20 +32,18 @@ class HomeDepot {
 
 		if (inputNuts >= 50) {
 			System.out.println(inputNuts + " nuts have been requested.");
-			nutPrice = inputNuts * nuts;
 		} else if (inputNuts < 50) {
 			while (inputNuts < 50 && i != 3) { // 3 tries
 				System.out.println(minimumNuts); // asks to re enter value
 				inputNuts = Scanner.nextInt();
 				i++;
 				if (i == 3) {
-					System.out.println("50 nuts have been requested as the minimum.");
-					nutPrice = inputNuts * 50;
+					System.out.println(NutsDefault + " nuts have been requested as the minimum.");
+					boolean defaultNut = true;
 				}
 			}
 			if (i != 3) {
 				System.out.println(inputNuts + " nuts have been requested.");
-				nutPrice = inputNuts * nuts;
 			}
 
 		}
@@ -59,20 +54,18 @@ class HomeDepot {
 
 		if (inputBolts >= 50) {
 			System.out.println(inputBolts + " bolts have been requested.");
-			boltPrice = inputBolts * bolts;
 		} else if (inputBolts < 50) {
 			while (inputBolts < 50 && y != 3) {
 				System.out.println(minimumBolts);
 				inputBolts = Scanner.nextInt();
 				y++;
 				if (y == 3) {
-					System.out.println("50 bolts have been requested as the minimum.");
-					boltPrice = 50 * bolts;
+					System.out.println(BoltsDefault + " bolts have been requested as the minimum.");
+					boolean defaultBolt = true;
 				}
 			}
 			if (y != 3) {
 				System.out.println(inputBolts + " bolts have been requested.");
-				boltPrice = inputBolts * bolts;
 			}
 		}
 
@@ -82,7 +75,6 @@ class HomeDepot {
 
 		if (inputWashers >= 50) {
 			System.out.println(inputWashers + " washers have been requested.");
-			washerPrice = inputWashers * washers;
 		} else if (inputWashers < 50) {
 			while (inputWashers < 50 && r != 3) {
 				System.out.println(minimumWashers);
@@ -90,27 +82,44 @@ class HomeDepot {
 				r++;
 				if (r == 3) {
 					System.out.println(WasherDefault + " washers have been requested as the minimum.");
-					washerPrice = 50 * washers;
+					boolean defaultWasher = true;
 				}
 			}
 			if (y != 3) {
 				System.out.println(inputWashers + " washers have been requested.");
-				washerPrice = inputWashers * washers;
 			}
 		}
 
 		Thread.sleep(200);
 		System.out.println("\n" + "Please wait while your order is being processed.");
-		for (int x = 0; x < 4; x++) {
+		for (int x = 0; i < 4; i++) {
 			System.out.print(".");
 			Thread.sleep(1000);
 		}
 		System.out.println();
-		
-			System.out.println("\n" + "Nuts: " + "$" + nutPrice); 
-			System.out.println("Bolts: " + "$" + boltPrice); 
-			System.out.println("Washers: " + "$" + washerPrice); 
-		
+
+		if (i == 1) { // if i equals 1
+			System.out.println("\n" + "Nuts: " + "$" + NutsDefault * nuts); // makes new line, prints out default nuts
+																			// (50) * price per nut (0.05)
+		} else {
+			System.out.println("\n" + "Nuts: " + "$" + inputNuts * nuts); // or else it will just print the data input *
+																			// 0.05
+		}
+
+		if (y == 1) { // if y equals 1
+			System.out.println("Bolts: " + "$" + BoltsDefault * bolts); // makes new line, prints out default bolts (50)
+																		// * price per bolt (0.05)
+		} else {
+			System.out.println("Bolts: " + "$" + inputBolts * bolts); // or else it will print data input * 0.05
+		}
+
+		if (r == 1) { // if r equals 1
+			System.out.println("Washers: " + "$" + WasherDefault * washers); // makes new line, prints out default
+																				// washers (50) * price per nut (0.02)
+		} else {
+			System.out.println("Washers: " + "$" + inputWashers * washers); // or else it will print data input * 0.02
+		}
+
 		// SUB TOTAL
 		if (i == 1 && y == 1 && r == 1) { // if i, y, and r ALL equal 1
 			subTotal = (NutsDefault * nuts) + (BoltsDefault * bolts) + (WasherDefault * washers); // calculate subtotal
