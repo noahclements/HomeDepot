@@ -35,7 +35,7 @@ class HomeDepot {
 				i++;
 				if (i == 3) {
 					System.out.println("50 nuts have been requested as the minimum.");
-					nutPrice = inputNuts * 50;
+					nutPrice = 50 * nuts;
 				}
 			}
 			if (i != 3) {
