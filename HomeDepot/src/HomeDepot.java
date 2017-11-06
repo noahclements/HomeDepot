@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.Scanner;
+
 class HomeDepot {
 	public static void main(String[] args) throws IOException, InterruptedException {	// InterruptedException is there for the Thread.sleep 
 		Scanner Scanner = new Scanner(System.in);
@@ -42,30 +43,29 @@ class HomeDepot {
 					System.out.println(inputNuts + " nuts have been requested.");
 				}
 					
-			}
-		// asking input for bolts
-		Thread.sleep(200);	// pauses for .5 seconds
-		System.out.println("\n" + enter + "bolts:");	// makes a new line, asks user to input # of wanted bolts
+		}
+
+		Thread.sleep(200);	
+		System.out.println("\n" + enter + "bolts:");	
 		inputBolts = Scanner.nextInt();
 
-		if (inputBolts >= 50 && y == 0) {	// if the input is greater than 50, and i is 0
-			System.out.println(inputBolts + " bolts have been requested.");	// display # of requested bolts
-		}		
-		
-		
-		
-		if (inputBolts < 50 && y == 0) {	// if the input is less than 50 and y is 0
-			System.out.println(minimumBolts); // asks to re enter value
-			inputBolts = Scanner.nextInt();
-		
-		if (inputBolts < 50 && y == 0) {	// another if statement inside the if statement, 
-				y++;						// to add 1 to y if it meets those requirements, 
+		if (inputBolts >= 50) {	
+			System.out.println(inputBolts + " bolts have been requested.");	
+		} else if (inputBolts < 50) {	
+			while(inputBolts < 50 && y != 3) {
+				System.out.println(minimumBolts); 
+				inputBolts = Scanner.nextInt();
+				y++;
+			if(y == 3) {
+				System.out.println(BoltsDefault + " bolts have been requested as the minimum.");
+				boolean defaultBolt = true;
 			}
 		}
-
-		if (y == 1) {	// if y is 1
-			System.out.println(BoltsDefault + " bolts have been requested as the minimum.");	// displays minimum requested value
+			if(y != 3) {
+				System.out.println(inputBolts + " bolts have been requested.");
+			}
 		}
+	
 
 		// asking input for washers
 		Thread.sleep(200);	// pauses for .5 seconds
@@ -160,3 +160,4 @@ class HomeDepot {
 
 	}
 }
+
