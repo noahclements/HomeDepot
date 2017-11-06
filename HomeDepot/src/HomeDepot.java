@@ -5,14 +5,14 @@ class HomeDepot {
 	public static void main(String[] args) throws IOException, InterruptedException { 
 		Scanner Scanner = new Scanner(System.in);
 
-		double nuts = 0.05; // initializes all the doubles
+		double nuts = 0.05; 
 		double bolts = 0.05;
 		double washers = 0.02;
 		double total; 
 		int inputNuts, inputBolts, inputWashers;
 
 		String minString1 = "A minimum of 50 ";
-		String minString2 = " washers must be ordered before your order can be processed.  Please re-enter the minimum amount.";
+		String minString2 = " must be ordered before your order can be processed.  Please re-enter the minimum amount.";
 
 		int i = 0; 
 		int y = 0;
